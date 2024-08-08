@@ -8,16 +8,22 @@ function Products() {
     fetch(`http://localhost:9000/products`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setProduct(data);
-      });
+      })
+      .catch((error) => console.error("Error fetching products:", error));
   }, []);
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:9000/products/${id}`, { method: "DELETE" })
+      .then(() => setProduct(products.filter((product) => product.id !== id)))
+      .catch((error) => console.error("Error deleting product:", error));
+  };
 
   return (
     <>
-      <h1 className="all-products ">All products</h1>
+      <h1 className="all-products">All products</h1>
       <div className="text-center mb-3">
-        <Link to={"/product/add"} className="btn btn-success">
+        <Link to="/product/add" className="btn btn-success">
           Add New Product
         </Link>
       </div>
@@ -36,17 +42,31 @@ function Products() {
             <tr key={product.id}>
               <th>{product.id}</th>
               <td>{product.title}</td>
-              <th>{product.description.slice(0, 100)}...</th>
+              <td>
+                {product.description.length > 100
+                  ? product.description.slice(0, 100) + "..."
+                  : product.description}
+              </td>
               <td>{product.price}</td>
               <td>
-                <Link className="btn btn-primary btn-sm">Edit</Link>
                 <Link
-                  to={`/Product/${product.id}`}
+                  to={`/product/edit/${product.id}`}
+                  className="btn btn-primary btn-sm"
+                >
+                  Edit
+                </Link>
+                <Link
+                  to={`/product/${product.id}`}
                   className="btn btn-info btn-sm"
                 >
                   View
                 </Link>
-                <Link className="btn btn-danger btn-sm">Delete</Link>
+                <button
+                  onClick={() => handleDelete(product.id)}
+                  className="btn btn-danger btn-sm"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

@@ -8,6 +8,7 @@ import Categories from "./components/categoties";
 import About from "./components/About";
 import AddProduct from "./components/AddProduct";
 import Product from "./components/Product";
+import EditProduct from "./components/EditProduct";
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,11 @@ function App() {
             <Route exact path="Product" element={<Products />} />
             <Route exact path={`/product/:productId`} element={<Product />} />
             <Route exact path="/Product/add" element={<AddProduct />} />
+            <Route
+              exact
+              path={`/product/edit/:productId`}
+              element={<EditProduct />}
+            />
             <Route exact path="Category" element={<Categories />} />
           </Routes>
         </div>
