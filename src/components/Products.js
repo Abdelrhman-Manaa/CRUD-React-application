@@ -36,7 +36,7 @@ function Products() {
             <tr key={product.id}>
               <th>{product.id}</th>
               <td>{product.title}</td>
-              <th>{product.description}</th>
+              <th>{product.description.slice(0, 100)}...</th>
               <td>{product.price}</td>
               <td>
                 <Link className="btn btn-primary btn-sm">Edit</Link>

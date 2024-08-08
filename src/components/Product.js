@@ -14,10 +14,10 @@ function Product() {
 
   return (
     <>
-      <h1>Product Details: {productId}</h1>
+      <h1 className="text-center">Product Details: {productId}</h1>
       {product ? ( // Render product details if product is available
         <div>
-          <h2>{product.name}</h2>
+          <h2>{product.title}</h2>
           <img src={product.image} alt={product.name} />
           <p>{product.description}</p>
           <p>Price: ${product.price}</p> {/* Example of additional data */}
