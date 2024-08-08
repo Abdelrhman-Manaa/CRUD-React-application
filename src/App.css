@@ -1,33 +1,40 @@
 
 .sidebar {
   background-color: #f8f9fa;
-  padding: 15px;
   height: 100vh;
+  text-align: center;
+  padding-top: 40px;
 }
 
-.sidebar .list-unstyled {
 
-  list-style-type: none;
-}
-
-.sidebar .list-unstyled li {
-  margin: 10px 0;
-}
-
-.sidebar .list-unstyled li a {
+.sidebar  li a {
   text-decoration: none;
   color: #007bff;
   font-size: 16px;
-  display: block;
+  display: inline-block;
   padding: 10px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  margin: 10px 0px;
 }
 
-.sidebar .list-unstyled li a:hover {
+.sidebar li a:hover {
   background-color: #e2e6ea;
   color: #0056b3;
 }
+.row{
+      --bs-gutter-x: 0 !important; 
+}
 div.col-10{
-  padding: 20px;
+  padding: 20px 
+}
+ .btn-sm{
+  margin: 2px 0 ;
+  width: 90%;
+}
+.btn-success {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px 0px;
 }

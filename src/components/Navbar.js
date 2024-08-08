@@ -5,7 +5,7 @@ function Navbar() {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to={"home"}>
+          <Link className="navbar-brand" to={"/"}>
             Crud
           </Link>
           <button
@@ -22,11 +22,7 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  aria-current="page"
-                  to={"Home"}
-                >
+                <Link className="nav-link active" aria-current="page" to={"/"}>
                   Home
                 </Link>
               </li>

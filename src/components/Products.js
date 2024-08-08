@@ -1,18 +1,58 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 function Products() {
+  const [products, setProduct] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:9000/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProduct(data);
+      });
+  }, []);
+
   return (
-    <div className="card" style={{ width: "18rem" }}>
-      <img src="..." className="card-img-top" alt="..." />
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#/" className="btn btn-primary">
-          Go somewhere
-        </a>
+    <>
+      <h1 className="all-products ">All products</h1>
+      <div className="text-center mb-3">
+        <Link to={"/product/add"} className="btn btn-success">
+          Add New Product
+        </Link>
       </div>
-    </div>
+      <table className="table table-dark table-striped text-center">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <th>{product.id}</th>
+              <td>{product.title}</td>
+              <th>{product.description}</th>
+              <td>{product.price}</td>
+              <td>
+                <Link className="btn btn-primary btn-sm">Edit</Link>
+                <Link
+                  to={`/Product/${product.id}`}
+                  className="btn btn-info btn-sm"
+                >
+                  View
+                </Link>
+                <Link className="btn btn-danger btn-sm">Delete</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 

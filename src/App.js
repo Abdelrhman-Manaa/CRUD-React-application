@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Products from "./components/Products";
 import Categories from "./components/categoties";
 import About from "./components/About";
+import AddProduct from "./components/AddProduct";
+import Product from "./components/Product";
 function App() {
   return (
     <div className="App">
@@ -16,9 +18,11 @@ function App() {
         </div>
         <div className="col-10 sections_ma">
           <Routes>
-            <Route exact path="Home" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route exact path="About" element={<About />} />
             <Route exact path="Product" element={<Products />} />
+            <Route exact path={`/product/:productId`} element={<Product />} />
+            <Route exact path="/Product/add" element={<AddProduct />} />
             <Route exact path="Category" element={<Categories />} />
           </Routes>
         </div>
