@@ -43,39 +43,41 @@ function AddProduct() {
 
   return (
     <>
-      <h1>Add New Product</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <br />
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <br />
-        <label>Description:</label>
-        <br />
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <br />
-        <label>Price:</label>
-        <br />
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <br />
-        <button type="submit" className="btn btn-success">
-          Add Product
-        </button>
-      </form>
+      <h1 className="text-center">Add New Product</h1>
+      <div className="mb-3">
+        <form onSubmit={handleSubmit}>
+          <label>Name:</label>
+          <br />
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <br />
+          <label>Description:</label>
+          <br />
+          <input
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+          <br />
+          <label>Price:</label>
+          <br />
+          <input
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+          <br />
+          <button type="submit" className="btn btn-success">
+            Add Product
+          </button>
+        </form>
+      </div>
     </>
   );
 }

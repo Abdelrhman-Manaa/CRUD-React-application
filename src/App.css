@@ -38,3 +38,7 @@ div.col-10{
   cursor: pointer;
   margin: 10px 0px;
 }
+.mb-3{
+  display: flex;
+  justify-content: center;
+}
