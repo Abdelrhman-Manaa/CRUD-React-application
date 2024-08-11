@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Products() {
   const [products, setProduct] = useState([]);
@@ -13,10 +14,24 @@ function Products() {
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
-  const handleDelete = (id) => {
-    fetch(`http://localhost:9000/products/${id}`, { method: "DELETE" })
-      .then(() => setProduct(products.filter((product) => product.id !== id)))
-      .catch((error) => console.error("Error deleting product:", error));
+  const handleDelete = (product) => {
+    Swal.fire({
+      title: `Are you sure To Delete ${product.title}?`,
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((data) => {
+      if (data.isConfirmed) {
+        fetch(`http://localhost:9000/products/${product.id}`, {
+          method: "DELETE",
+        })
+          .then(() => setProduct(products.filter((p) => p.id !== product.id)))
+          .catch((error) => console.error("Error deleting product:", error));
+      }
+    });
   };
 
   return (
@@ -62,7 +77,7 @@ function Products() {
                   View
                 </Link>
                 <button
-                  onClick={() => handleDelete(product.id)}
+                  onClick={() => handleDelete(product)}
                   className="btn btn-danger btn-sm"
                 >
                   Delete
