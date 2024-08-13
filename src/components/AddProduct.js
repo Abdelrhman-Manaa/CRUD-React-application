@@ -11,7 +11,6 @@ function AddProduct() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the current products to determine the last ID
     axios
       .get("http://localhost:9000/products")
       .then((response) => {
@@ -74,7 +73,7 @@ function AddProduct() {
           />
           <br />
           <button type="submit" className="btn btn-success">
-            Add Product
+            Add New Product
           </button>
         </form>
       </div>
